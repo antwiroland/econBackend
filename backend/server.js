@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
+import cors from "cors";
 
 import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
@@ -13,10 +14,17 @@ import ordersRoutes from "./routes/order.route.js";
 
 import { connectDB } from "./lib/db.js";
 
+// Allow cross-origin requests from specific origin
+const corsOptions = {
+  origin: "https://econfront.onrender.com", // Specify the allowed origin
+  methods: "GET,POST,DELETE,PUT", // Allow only the methods you need
+};
+
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.use(cors(corsOptions));
 
 const __dirname = path.resolve();
 
