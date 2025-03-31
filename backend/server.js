@@ -18,6 +18,7 @@ import { connectDB } from "./lib/db.js";
 const corsOptions = {
   origin: "https://econfront.onrender.com", // Specify the allowed origin
   methods: "GET,POST,DELETE,PUT", // Allow only the methods you need
+  credentials: true,
 };
 
 dotenv.config();
